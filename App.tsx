@@ -14,7 +14,7 @@ import Footer from './components/Footer';
 import MenuSidebar from './components/MenuSidebar';
 import CartSidebar from './components/CartSidebar';
 
-// --- COLOR UTILITY FUNCTIONS ---
+
 
 function hexToRgb(hex: string): { r: number; g: number; b: number } | null {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -37,7 +37,7 @@ function rgbToHsl(r: number, g: number, b: number): [number, number, number] {
   const l = (max + min) / 2;
 
   if (max === min) {
-    h = s = 0; // achromatic
+    h = s = 0; 
   } else {
     const d = max - min;
     s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
@@ -61,7 +61,7 @@ function hslToRgb(h: number, s: number, l: number): [number, number, number] {
   let r: number, g: number, b: number;
 
   if (s === 0) {
-    r = g = b = l; // achromatic
+    r = g = b = l; 
   } else {
     const hue2rgb = (p: number, q: number, t: number) => {
       if (t < 0) t += 1;
@@ -88,7 +88,7 @@ function rgbToHex(r: number, g: number, b: number): string {
   return '#' + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
 
-// --- SEARCH RESULTS COMPONENT ---
+
 const SearchResults: React.FC<{ results: Product[]; onSelectProduct: (product: Product) => void; }> = ({ results, onSelectProduct }) => {
   return (
     <div className="absolute top-20 right-12 w-80 bg-white rounded-lg shadow-2xl z-50 overflow-hidden border border-gray-200">
