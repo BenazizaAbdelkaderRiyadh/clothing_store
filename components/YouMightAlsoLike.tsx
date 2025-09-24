@@ -5,12 +5,12 @@ import ProductScroller from './ProductScroller';
 
 interface YouMightAlsoLikeProps {
   onSelectProduct: (product: Product) => void;
-  // FIX: Added `selectedProductId` prop to fix type error in App.tsx and allow filtering.
+
   selectedProductId: string;
 }
 
 const YouMightAlsoLike: React.FC<YouMightAlsoLikeProps> = ({ onSelectProduct, selectedProductId }) => {
-  // FIX: Filtered product lists to exclude the currently selected product.
+
   const shoes = (PRODUCTS_DATA['Shoes'] || []).filter(p => p.id !== selectedProductId);
   const outfits = (PRODUCTS_DATA['Outfits'] || []).filter(p => p.id !== selectedProductId);
   const vests = (PRODUCTS_DATA['Vests'] || []).filter(p => p.id !== selectedProductId);
