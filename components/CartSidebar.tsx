@@ -14,15 +14,15 @@ const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, cartItems, o
   const [removingItems, setRemovingItems] = useState<string[]>([]);
 
   const handleRemoveClick = (itemId: string) => {
-    // Add item to the removing list to trigger animation
+
     setRemovingItems(prev => [...prev, itemId]);
     
-    // Set a timeout to remove the item from state after the animation
+
     setTimeout(() => {
       onRemoveItem(itemId);
-      // Clean up the removingItems array after the item is gone
+
       setRemovingItems(prev => prev.filter(id => id !== itemId));
-    }, 300); // This duration should match the animation duration
+    }, 300); 
   };
 
 
@@ -30,14 +30,14 @@ const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, cartItems, o
     <div
       className={`fixed inset-0 z-50 transition-opacity duration-300 ease-in-out ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
     >
-      {/* Overlay */}
+      {}
       <div 
         className="absolute inset-0 bg-black/50" 
         onClick={onClose}
         aria-hidden="true"
       ></div>
 
-      {/* Sidebar Content */}
+      {}
       <div 
         className={`absolute top-0 right-0 flex flex-col w-full max-w-md h-full bg-white shadow-xl transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
