@@ -17,7 +17,7 @@ export interface Product {
 }
 
 export interface CartItem {
-  id: string; // Unique composite ID: product.id-color.id-size
+  id: string; 
   name: string;
   tagline: string;
   colorName: string;
