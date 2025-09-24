@@ -8,16 +8,16 @@ interface ProductScrollerProps {
 }
 
 const ProductScroller: React.FC<ProductScrollerProps> = ({ products, direction, onProductClick }) => {
-    // 1. Create a base list that is long enough to fill wide screens, preventing gaps.
+
     const extendedProducts = useMemo(() => {
         if (!products || products.length === 0) return [];
-        const desiredCount = 12; // Target minimum number of items to ensure the track is wide.
+        const desiredCount = 12; 
         const factor = Math.ceil(desiredCount / products.length);
-        // Repeat the products array 'factor' times, but at least once.
+
         return Array(Math.max(1, factor)).fill(products).flat();
     }, [products]);
 
-    // 2. Duplicate the extended list for the seamless animation technique.
+
     const scrollerContent = useMemo(() => [...extendedProducts, ...extendedProducts], [extendedProducts]);
     
     const scrollerRef = useRef<HTMLDivElement>(null);
@@ -30,7 +30,7 @@ const ProductScroller: React.FC<ProductScrollerProps> = ({ products, direction, 
 
         let pos = 0;
         let loopWidth = 0;
-        const BASE_SPEED = 40; // Pixels per second
+        const BASE_SPEED = 40; 
         const HOVER_SPEED = 8;
         let currentSpeed = BASE_SPEED;
         let targetSpeed = BASE_SPEED;
@@ -40,16 +40,16 @@ const ProductScroller: React.FC<ProductScrollerProps> = ({ products, direction, 
         const measure = () => {
             if (!track) return;
             loopWidth = 0;
-            // 3. Calculate loopWidth based on the extended (but not yet duplicated) list.
+
             const originalChildrenCount = extendedProducts.length;
             if (track.children.length > originalChildrenCount) {
                 for (let i = 0; i < originalChildrenCount; i++) {
                     loopWidth += (track.children[i] as HTMLElement).offsetWidth;
                 }
-                const gap = parseInt(window.getComputedStyle(track).gap) || 32; // Corresponds to space-x-8
+                const gap = parseInt(window.getComputedStyle(track).gap) || 32; 
                 loopWidth += (gap * originalChildrenCount);
             }
-            // Set initial position for right-scrolling animation to avoid a starting gap.
+
             if (direction === 'right' && pos === 0) { 
                 pos = -loopWidth;
             }
@@ -62,12 +62,11 @@ const ProductScroller: React.FC<ProductScrollerProps> = ({ products, direction, 
             const dt = (now - lastTime) / 1000;
             lastTime = now;
             
-            currentSpeed += (targetSpeed - currentSpeed) * 0.08; // Smooth speed transition
-
+            currentSpeed += (targetSpeed - currentSpeed) * 0.08; 
             if (direction === 'left') {
                 pos -= currentSpeed * dt;
                 if (pos <= -loopWidth) pos += loopWidth;
-            } else { // direction === 'right'
+            } else {
                 pos += currentSpeed * dt;
                 if (pos >= 0) pos -= loopWidth;
             }
