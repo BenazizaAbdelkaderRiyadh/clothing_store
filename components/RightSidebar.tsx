@@ -27,7 +27,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
   
   return (
     <>
-      {/* Centered Content: Absolutely positioned to be in the middle vertically */}
+      {}
       <div className="absolute top-1/2 left-0 right-0 transform -translate-y-1/2">
         <div className="mb-8">
             <h3 className="text-sm font-semibold mb-4 tracking-wider self-start">SELECT A COLOR</h3>
@@ -62,7 +62,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
         )}
       </div>
 
-      {/* Bottom Content: Absolutely positioned at the bottom right of the container */}
+      {}
       {selectedCategory === 'Outfits' && (
         <div className="absolute bottom-0 right-0">
           <ShopTheLook
